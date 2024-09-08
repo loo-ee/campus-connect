@@ -24,19 +24,23 @@ export default {
 				textLight: "#fafafa",
 				textDark: '#0a0a0a',
 				primary: {
+					0: "#60A5FA",
 					1: "#2563eb",
 					2: "#1e40af",
 				},
 				accent: {
 					ok: {
+						0: "#10b981",
 						1: "#047857",
 						2: "#065f46"
 					},
 					warning: {
+						0: "#facc15",
 						1: "#eab308",
 						2: "#ca8a04"
 					},
 					destructive: {
+						0: "#f87171",
 						1: "#ef4444",
 						2: "#dc2626"
 					}
