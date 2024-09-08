@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import NavLink from '@/Components/NavLink';
+import ApplicationLogo from '@/components/ApplicationLogo';
+import NavLink from '@/components/NavLink';
 import { Link, router } from '@inertiajs/react';
 import { User } from '@/types';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';

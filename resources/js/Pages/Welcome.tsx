@@ -1,6 +1,6 @@
 import { Link, Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
-import ApplicationLogo from '@/Components/ApplicationLogo';
+import ApplicationLogo from '@/components/ApplicationLogo';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { CaretDownIcon } from '@radix-ui/react-icons';
 
