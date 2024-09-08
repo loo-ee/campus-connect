@@ -21,41 +21,25 @@ export default {
 				inter: ['Inter']
 			},
 			colors: {
-				textLight: 'slate.slate1',
-				textDark: '#313131',
-				slate: {
-					'1': 'slate.slate1',
-					'2': 'slate.slate2',
-					'3': 'slate.slate3',
-					'4': 'slate.slate4',
-					'5': 'slate.slate5',
-					'6': 'slate.slate6',
-					'7': 'slate.slate7',
-					'8': 'slate.slate8',
-					'9': 'slate.slate9',
-					'10': 'slate.slate10',
-					'11': 'slate.slate11',
-					'12': 'slate.slate12'
-				},
+				textLight: "#fafafa",
+				textDark: '#0a0a0a',
 				primary: {
-					'1': 'blue.blue1',
-					'2': 'blue.blue2',
-					'3': 'blue.blue3',
-					'4': 'blue.blue4',
-					'5': 'blue.blue5',
-					'6': 'blue.blue6',
-					'7': 'blue.blue7',
-					'8': 'blue.blue8',
-					'9': 'blue.blue9',
-					'10': 'blue.blue10',
-					'11': 'blue.blue11',
-					'12': 'blue.blue12'
+					1: "#2563eb",
+					2: "#1e40af",
 				},
 				accent: {
-					ok: 'green.green10',
-					warning: 'yellow.yellow9',
-					destructive: 'red.red9',
-					destructiveHover: 'red.red11'
+					ok: {
+						1: "#047857",
+						2: "#065f46"
+					},
+					warning: {
+						1: "#eab308",
+						2: "#ca8a04"
+					},
+					destructive: {
+						1: "#ef4444",
+						2: "#dc2626"
+					}
 				}
 			},
 			borderRadius: {

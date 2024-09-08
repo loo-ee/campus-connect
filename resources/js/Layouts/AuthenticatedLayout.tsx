@@ -3,7 +3,15 @@ import ApplicationLogo from '@/components/ApplicationLogo';
 import NavLink from '@/components/NavLink';
 import { Link, router } from '@inertiajs/react';
 import { User } from '@/types';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { CaretDownIcon } from '@radix-ui/react-icons';
 
 export default function Authenticated({
@@ -40,7 +48,7 @@ export default function Authenticated({
 
             <div className="hidden sm:flex sm:items-center sm:ms-6">
               <div className="ms-3 relative">
-                <DropdownMenu.Root>
+                {/* <DropdownMenu.Root>
                   <DropdownMenu.Trigger asChild>
                     <div className="flex flex-row items-baseline gap-x-2">
                       <span className="">{user.name}</span>
@@ -67,7 +75,27 @@ export default function Authenticated({
                       </DropdownMenu.Item>
                     </DropdownMenu.Content>
                   </DropdownMenu.Portal>
-                </DropdownMenu.Root>
+                </DropdownMenu.Root> */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <div className="flex flex-row items-baseline gap-x-2">
+                      <span className="">{user.name}</span>
+                      <CaretDownIcon />
+                    </div>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="min-w-[150px]">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem onSelect={() => router.get('profile')}>
+                        Profile
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => router.post('logout')}>
+                        Logout
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </div>
           </div>

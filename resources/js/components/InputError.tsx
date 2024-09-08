@@ -6,7 +6,7 @@ export default function InputError({
   ...props
 }: HTMLAttributes<HTMLParagraphElement> & { message?: string }) {
   return message ? (
-    <p {...props} className={'text-sm text-accent-destructive ' + className}>
+    <p {...props} className={'text-sm text-accent-destructive-1 ' + className}>
       {message}
     </p>
   ) : null;
