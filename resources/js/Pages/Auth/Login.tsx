@@ -1,7 +1,7 @@
 import { FormEventHandler } from 'react';
-import Checkbox from '@/components/Checkbox';
+import Checkbox from '@/components/custom/Checkbox';
 import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/components/InputError';
+import InputError from '@/components/custom/InputError';
 import { Head, Link, useForm } from '@inertiajs/react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';

@@ -1,10 +1,5 @@
-import { useRef, useState, FormEventHandler } from 'react';
-import DangerButton from '@/components/DangerButton';
-import InputError from '@/components/InputError';
-import InputLabel from '@/components/InputLabel';
-import Modal from '@/components/Modal';
-import SecondaryButton from '@/components/SecondaryButton';
-import TextInput from '@/components/TextInput';
+import { useRef, FormEventHandler } from 'react';
+import InputError from '@/components/custom/InputError';
 import { useForm } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import {

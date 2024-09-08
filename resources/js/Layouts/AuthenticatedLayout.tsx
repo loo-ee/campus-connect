@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import ApplicationLogo from '@/components/ApplicationLogo';
-import NavLink from '@/components/NavLink';
+import ApplicationLogo from '@/components/custom/ApplicationLogo';
+import NavLink from '@/components/custom/NavLink';
 import { Link, router } from '@inertiajs/react';
 import { User } from '@/types';
 import {
