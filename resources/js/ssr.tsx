@@ -18,11 +18,12 @@ createServer((page) =>
         import.meta.glob('./Pages/**/*.tsx')
       ),
     setup: ({ App, props }) => {
+      // @ts-expect-error This is necessary
       global.route<RouteName> = (name, params, absolute) =>
         route(name, params as any, absolute, {
-          // @ts-expect-error
+          // @ts-expect-error This is necessary
           ...page.props.ziggy,
-          // @ts-expect-error
+          // @ts-expect-error This is necessary
           location: new URL(page.props.ziggy.location),
         });
 
