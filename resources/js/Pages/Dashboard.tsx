@@ -2,9 +2,10 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 
-export default function Dashboard({ auth }: PageProps) {
+export default function Dashboard({ auth, ziggy }: PageProps) {
   return (
     <AuthenticatedLayout
+      ziggy={ziggy}
       user={auth.user}
       header={
         <h2 className="font-semibold font-inter text-xl text-textDark leading-tight">

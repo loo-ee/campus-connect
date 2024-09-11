@@ -1,6 +1,5 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import ApplicationLogo from '@/components/custom/ApplicationLogo';
-import NavLink from '@/components/custom/NavLink';
 import { Link, router } from '@inertiajs/react';
 import { User } from '@/types';
 import {
@@ -12,76 +11,42 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { CaretDownIcon } from '@radix-ui/react-icons';
+import { Config } from '../../../vendor/tightenco/ziggy/src/js';
+import { ScrollArea } from '@/components/ui/scroll-area';
+
+const routePaths = ['dashboard', 'profile'];
 
 export default function Authenticated({
-  user,
-  header,
   children,
-}: PropsWithChildren<{ user: User; header?: ReactNode }>) {
+  ziggy,
+}: PropsWithChildren<{
+  user: User;
+  ziggy?: Config & {
+    location: string;
+  };
+  header?: ReactNode;
+}>) {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <nav className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-12">
+    <div className="h-screen">
+      <nav className="bg-white border-gray-300 fixed top-0 w-screen">
+        <div className="w-screen px-8">
+          <div className="flex justify-between h-14 z-10">
             <div className="flex items-center">
-              <Link href={route('home')}>
-                <div className="self-center w-8 flex">
-                  <ApplicationLogo />
+              <Link href={route('landing_page')}>
+                <div className="self-center items-center gap-x-2 w-48 flex flex-row">
+                  <div className="w-8">
+                    <ApplicationLogo />
+                  </div>
+                  <span className="font-bold font-inter">Campus Connect</span>
                 </div>
               </Link>
-              <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <NavLink
-                  href={route('dashboard')}
-                  active={route().current('dashboard')}
-                >
-                  Dashboard
-                </NavLink>
-                <NavLink
-                  href={route('profile.edit')}
-                  active={route().current('profile.edit')}
-                >
-                  Profile
-                </NavLink>
-              </div>
             </div>
 
             <div className="hidden sm:flex sm:items-center sm:ms-6">
               <div className="ms-3 relative">
-                {/* <DropdownMenu.Root>
-                  <DropdownMenu.Trigger asChild>
-                    <div className="flex flex-row items-baseline gap-x-2">
-                      <span className="">{user.name}</span>
-                      <CaretDownIcon />
-                    </div>
-                  </DropdownMenu.Trigger>
-
-                  <DropdownMenu.Portal>
-                    <DropdownMenu.Content
-                      className="min-w-[150px] bg-white rounded-sm p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade"
-                      sideOffset={5}
-                    >
-                      <DropdownMenu.Item
-                        onSelect={() => router.get('profile')}
-                        className="hover:bg-primary-11 hover:text-textLight group text-[13px] leading-none text-violet11 rounded-sm flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
-                      >
-                        Profile
-                      </DropdownMenu.Item>
-                      <DropdownMenu.Item
-                        onSelect={() => router.post('logout')}
-                        className="hover:bg-primary-11 hover:text-textLight group text-[13px] leading-none text-violet11 rounded-sm flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
-                      >
-                        Logout
-                      </DropdownMenu.Item>
-                    </DropdownMenu.Content>
-                  </DropdownMenu.Portal>
-                </DropdownMenu.Root> */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <div className="flex flex-row items-baseline gap-x-2">
-                      <span className="">{user.name}</span>
-                      <CaretDownIcon />
-                    </div>
+                    <img src="account.png" className="w-8 h-8" alt="" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="min-w-[150px]">
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -102,15 +67,46 @@ export default function Authenticated({
         </div>
       </nav>
 
-      {header && (
-        <header className="bg-white shadow">
-          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            {header}
-          </div>
-        </header>
-      )}
+      <div className="flex flex-row mt-16">
+        <section className="flex flex-col w-[420px] h-screen items-start ml-5 bg-white boder-gray-300">
+          <div className="flex flex-col px-5 py-3 w-full border border-gray-300 rounded-sm">
+            <div className="flex flex-row gap-x-2 rounded-sm items-center">
+              <img
+                src="idealist-guild.png"
+                className="w-10 h-10 rounded-full"
+                alt=""
+              />
+              <span>The Idealists' Guild</span>
+            </div>
 
-      <main>{children}</main>
+            <div className="flex flex-col w-full mt-5 text-sm">
+              {routePaths.map((r) => (
+                <div
+                  key={r}
+                  className={`bg-whtie w-full rounded-sm px-3 py-2 ${ziggy?.location.includes(r) ? ' bg-slate-200' : ''}`}
+                >
+                  <Link href={route(r)}>
+                    <div className="flex flex-row gap-x-2 ">
+                      <img
+                        src={`${r}-${ziggy?.location.includes(r) ? 'filled' : 'outlined'}.svg`}
+                        alt=""
+                      />
+                      <label className="text-slate-900" htmlFor="r1">
+                        {r[0].toUpperCase() + r.slice(1)}
+                      </label>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        <main className="w-full rounded-sm">
+          <ScrollArea className="h-screen w-full rounded-md">
+            {children}
+          </ScrollArea>
+        </main>
+      </div>
     </div>
   );
 }
