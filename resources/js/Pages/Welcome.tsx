@@ -111,7 +111,7 @@ export default function Welcome({
             Streamline your organization's operations with our powerful
             collaboration tools
           </span>
-          <span className="w-[500px] text-lg">
+          <span className="w-[500px] text-lg text-justify">
             Campus Connect provides a comprehensive set of features to help
             school organizations manage their members, finances, and
             announcements. With our intuitive platform, you can easily

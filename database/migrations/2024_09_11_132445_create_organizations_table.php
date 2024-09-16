@@ -9,13 +9,13 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create("organization_type", function (Blueprint $table) {
+        Schema::create("organization_types", function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->timestamps();
         });
 
-        Schema::create('organization', function (Blueprint $table) {
+        Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->foreignId('user_id')
@@ -28,13 +28,13 @@ return new class extends Migration {
             $table->timestamps();
         });
 
-        Schema::create('position', function (Blueprint $table) {
+        Schema::create('positions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
         });
 
-        Schema::create('user_organization', function (Blueprint $table) {
+        Schema::create('user_organizations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('organization_id')->constrained()->onDelete('cascade');
@@ -49,9 +49,9 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('organization_type');
-        Schema::dropIfExists('organization');
-        Schema::dropIfExists('position');
-        Schema::dropIfExists('user_organization');
+        Schema::dropIfExists('organization_types');
+        Schema::dropIfExists('organizations');
+        Schema::dropIfExists('positions');
+        Schema::dropIfExists('user_organizations');
     }
 };
