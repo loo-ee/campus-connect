@@ -1,5 +1,4 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import ApplicationLogo from '@/components/custom/ApplicationLogo';
 import { Link, router } from '@inertiajs/react';
 import { User } from '@/types';
 import {
@@ -45,7 +44,7 @@ export default function Authenticated({
                 <Link href={route('landing_page')}>
                   <div className="self-center items-center gap-x-2 w-48 flex flex-row">
                     <div className="w-8">
-                      <ApplicationLogo />
+                      <img src="campus-connect.svg" alt="app-logo" />
                     </div>
                     <span className="font-bold font-inter">Campus Connect</span>
                   </div>
