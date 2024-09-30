@@ -308,9 +308,9 @@ export default function Welcome({
           </div>
         </div>
 
-        <div className="flex flex-row justify-evenly items-center mt-44">
+        <section className="flex flex-row justify-evenly items-center mt-44">
           <div className="flex flex-col laptop:w-[500px] desktop:w-[600px]">
-            <img src="i3.png" alt="" className="scale-150" />
+            <img src="i4.png" alt="" className="scale-150" />
           </div>
 
           <div className="flex flex-col laptop:w-[500px] desktop:w-[600px] z-10">
@@ -349,7 +349,115 @@ export default function Welcome({
               </div>
             </div>
           </div>
+        </section>
+
+        <div className="flex flex-col justify-evenly w-full mt-36">
+          <div className="flex flex-col ml-24">
+            <span id="welcome-reviews-title">Satisfied Customers</span>
+            <span id="welcome-reviews-subtitle">
+              Hear what our users have to say about Campus Connect
+            </span>
+          </div>
+
+          <div className="flex flex-row justify-evenly w-full items-center mt-14">
+            <div className="flex flex-col laptop:w-[500px] desktop:w-[600px]">
+              <span>&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+              <span className="font-bold mt-5">
+                Campus Connect has revolutionized the way our organization
+                operates. It has streamlined our processes and improved
+                collaboration among members.
+              </span>
+
+              <div className="flex flex-row mt-5 gap-x-3">
+                <img src="jann.jpg" alt="" className="w-10 rounded-full" />
+                <div className="flex flex-col justify-center text-xs">
+                  <span className="font-semibold">Jann Louie Almirante</span>
+                  <span>President, The Idealists' Guild</span>
+                </div>
+                <div className="border-x border-solid border-slate-400"></div>
+                <img src="webflow.png" alt="" className="scale-50 -ml-10" />
+              </div>
+            </div>
+
+            <div className="flex flex-col laptop:w-[500px] desktop:w-[600px] z-10">
+              <span>&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+              <span className="font-bold mt-5">
+                Using Campus Connect has been a game-changer for our
+                organization. It has made communication and coordination much
+                easier, saving us time and effort.
+              </span>
+
+              <div className="flex flex-row mt-5 gap-x-3">
+                <img src="elliot.jpg" alt="" className="w-10 rounded-full" />
+                <div className="flex flex-col justify-center text-xs">
+                  <span className="font-semibold">Jann Louie Almirante</span>
+                  <span>CTO, FScociety</span>
+                </div>
+                <div className="border-x border-solid border-slate-400"></div>
+                <img src="webflow.png" alt="" className="scale-50 -ml-10" />
+              </div>
+            </div>
+          </div>
         </div>
+
+        <section className="flex flex-col justify-evenly items-center w-full mt-44">
+          <span>Connect</span>
+          <span className="font-bold text-[36px] font-inter">Get in Touch</span>
+          <span className="mt-333">
+            Have a question? Need assistance? Contact us today.
+          </span>
+
+          <div className="flex flex-row justify-evenly mt-16">
+            <div className="flex flex-col w-[350px] items-center">
+              <img src="email.png" alt="" className="w-10" />
+              <span className="font-bold text-xl mt-5">Email</span>
+              <span className="mt-5 text-center">
+                Contact us via email and we will respond accordingly.
+              </span>
+              <span className="underline mt-3">help@campusconnect.com</span>
+            </div>
+
+            <div className="flex flex-col w-[350px] items-center">
+              <img src="phone.png" alt="" className="w-10" />
+              <span className="font-bold text-xl mt-5">Phone</span>
+              <span className="mt-5 text-center">
+                Contact us via phone and we will respond accordingly.
+              </span>
+              <span className="underline mt-3">+1 (555) 123-4567</span>
+            </div>
+
+            <div className="flex flex-col w-[350px] items-center">
+              <img src="location.png" alt="" className="w-10" />
+              <span className="font-bold text-xl mt-5">Office</span>
+              <span className="mt-5 text-center">
+                Visit our office and let a staff guide you.
+              </span>
+              <span className="underline mt-3">123 Main St, Anytown, USA</span>
+            </div>
+          </div>
+        </section>
+
+        <footer className="flex flex-col pb-3 text-xs justify-between items-center w-full mt-28">
+          <div className="h-[1px] w-full bg-slate-950"></div>
+          <div className="flex flex-row justify-between mt-5 items-center w-full">
+            <div className="flex flex-row gap-x-5">
+              <span className="">
+                &#169; 2024 Campus Connect. All rights reserved.
+              </span>
+              <span className="underline">Privacy Policy</span>
+              <span className="underline">Terms of Service</span>
+              <span className="underline">Cookies Settings</span>
+            </div>
+
+            <div className="flex flex-row gap-x-3">
+              <img src="facebook.png" alt="" className="w-4" />
+              <img src="instagram.png" alt="" className="w-4" />
+              <img src="twitter.png" alt="" className="w-4" />
+              <img src="linkedin.png" alt="" className="w-4" />
+              <img src="youtube.png" alt="" className="w-4" />
+            </div>
+          </div>
+        </footer>
       </main>
     </div>
   );
