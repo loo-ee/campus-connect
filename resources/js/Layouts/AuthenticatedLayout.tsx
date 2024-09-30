@@ -1,3 +1,4 @@
+import '../../css/authenticated-layout.css';
 import { PropsWithChildren, ReactNode } from 'react';
 import { Link, router } from '@inertiajs/react';
 import { User } from '@/types';
@@ -36,71 +37,71 @@ export default function Authenticated({
 }>) {
   return (
     <TooltipProvider>
-      <div className="h-screen w-screen overflow-hidden">
-        <nav className="bg-white border-gray-300 fixed top-0 z-50 w-screen px-8">
-          <div className="w-full">
-            <div className="flex justify-between h-20">
-              <div className="flex items-center">
-                <Link href={route('landing_page')}>
-                  <div className="self-center items-center gap-x-2 w-48 flex flex-row">
-                    <div className="w-8">
-                      <img src="campus-connect.svg" alt="app-logo" />
-                    </div>
-                    <span className="font-bold font-inter">Campus Connect</span>
-                  </div>
-                </Link>
-              </div>
-
-              <div className="sm:flex flex-row sm:items-center sm:ms-6 gap-x-3">
-                <div className="relative ml-auto flex-1 md:grow-0">
-                  <Search className="text-slate-900 absolute left-2.5 top-2 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    type="search"
-                    placeholder="Search..."
-                    className="w-full bg-background pl-8 md:w-[200px] lg:w-[336px] h-8"
+      <div id="auth-main-container">
+        <nav id="auth-nav-container">
+          <div id="auth-sub-nav-container">
+            <div id="auth-logo-main-container">
+              <Link href={route('landing_page')}>
+                <div id="auth-logo-sub-container">
+                  <img
+                    src="campus-connect.svg"
+                    id="auth-logo-img"
+                    alt="app-logo"
                   />
+                  <span id="auth-logo-text">Campus Connect</span>
                 </div>
-                <div className="flex flex-row gap-x-3 text-slate-600">
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <BellIcon />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <span>Notifications</span>
-                    </TooltipContent>
-                  </Tooltip>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <MessageSquare />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <span>Inbox</span>
-                    </TooltipContent>
-                  </Tooltip>
-                </div>
-                <div className="w-full">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <img src="account.png" className="w-8 h-8" alt="" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="min-w-[150px]">
-                      <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuGroup>
-                        <DropdownMenuItem
-                          onSelect={() => router.get('profile')}
-                        >
-                          Profile
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          onSelect={() => router.post('logout')}
-                        >
-                          Logout
-                        </DropdownMenuItem>
-                      </DropdownMenuGroup>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
+              </Link>
+            </div>
+
+            <div id="auth-actions-main-container">
+              <div id="auth-search-main-container">
+                <Search id="auth-search-icon" />
+                <Input
+                  type="search"
+                  placeholder="Search..."
+                  id="auth-search-input"
+                />
+              </div>
+              <div id="auth-actions-icons-container">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <BellIcon />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <span>Notifications</span>
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <MessageSquare />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <span>Inbox</span>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="auth-actions-dropdown-container">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <img
+                      src="account.png"
+                      id="auth-actions-dropdown-trigger"
+                      alt="account pfp"
+                    />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent id="auth-actions-dropdown-content">
+                    <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem onSelect={() => router.get('profile')}>
+                        Profile
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => router.post('logout')}>
+                        Logout
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </div>
           </div>

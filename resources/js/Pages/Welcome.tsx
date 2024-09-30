@@ -1,3 +1,4 @@
+import '../../css/pages/welcome.css';
 import { Link, Head } from '@inertiajs/react';
 import { PageProps } from '@/types';
 import { CaretDownIcon, ChevronRightIcon } from '@radix-ui/react-icons';
@@ -16,7 +17,7 @@ export default function Welcome({
   phpVersion: string;
 }>) {
   return (
-    <div className="flex flex-col">
+    <div className="page-container">
       <Head title="Welcome" />
       <header className="flex text-sm flex-row items-center justify-between h-16 mt-3 pt-0 pb-2 px-10">
         <div className="flex flex-row w-56 gap-x-3 items-center">
