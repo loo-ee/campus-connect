@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useState } from 'react';
 
 export default function Welcome({
   auth,
@@ -16,10 +17,70 @@ export default function Welcome({
   laravelVersion: string;
   phpVersion: string;
 }>) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="page-container">
       <Head title="Welcome" />
-      <header className="flex text-sm flex-row items-center justify-between h-16 mt-3 pt-0 pb-2 px-10">
+
+      <header className="w-screen tablet:hidden bg-white p-5 shadow-lg">
+        <div className="flex justify-between items-center">
+          <div className="flex flex-row w-56 gap-x-3 items-center">
+            <div className="flex w-10 h-10">
+              <img src="campus-connect.svg" alt="app-logo" />
+            </div>
+            <span className="font-bold text-[20px] font-inter">
+              Campus Connect
+            </span>
+          </div>
+          <button
+            onClick={toggleMenu}
+            className="flex items-center px-3 py-2 border rounded text-primary-1 border-primary-0 hover:text-primary-2 hover:border-primary-1 focus:outline-none"
+          >
+            <svg
+              className="fill-current h-6 w-6"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M3 5h18v2H3V5zm0 6h18v2H3v-2zm0 6h18v2H3v-2z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Menu Items */}
+        <div className={`items-center w-full ${isOpen ? 'flex' : 'hidden'}`}>
+          <ul className="flex flex-col w-full items-center mt-5 md:mt-0">
+            <li className="mb-4 md:mb-0 md:ml-6">
+              <a href="/" className="text-gray-800 hover:text-blue-500">
+                Home
+              </a>
+            </li>
+            <li className="mb-4">
+              <a href="/about" className="text-gray-800 hover:text-blue-500">
+                About
+              </a>
+            </li>
+            <li className="mb-4 md:mb-0 md:ml-6">
+              <a href="/services" className="text-gray-800 hover:text-blue-500">
+                Services
+              </a>
+            </li>
+            <li className="mb-4 md:mb-0 md:ml-6">
+              <a href="/contact" className="text-gray-800 hover:text-blue-500">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+      <header className="phone:hidden tablet:flex text-sm flex-row items-center justify-between h-16 mt-3 pt-0 pb-2 px-10">
         <div className="flex flex-row w-56 gap-x-3 items-center">
           <div className="flex w-10 h-10">
             <img src="campus-connect.svg" alt="app-logo" />
@@ -30,14 +91,14 @@ export default function Welcome({
         </div>
 
         <div className="flex flex-row justify-around gap-x-10">
+          <a href="#about">
+            <span>About</span>
+          </a>
+          <a href="#services">
+            <span>Services</span>
+          </a>
           <Link href={route('dashboard')}>
-            <span className="">About Us</span>
-          </Link>
-          <Link href={route('dashboard')}>
-            <span className="">Services</span>
-          </Link>
-          <Link href={route('dashboard')}>
-            <span className="">Events</span>
+            <span className="">Dashboard</span>
           </Link>
 
           <DropdownMenu>
@@ -81,12 +142,12 @@ export default function Welcome({
       </header>
 
       <main className="flex flex-col laptop:w-full desktop:max-w-[2000px] self-center px-10">
-        <div className="flex flex-row items-center justify-around mt-10">
-          <div className="flex flex-col w-[500px] gap-y-4">
-            <span className="text-[50px] leading-tight font-inter font-bold">
+        <div className="flex phone:flex-col laptop:flex-row items-center justify-around mt-10">
+          <div className="flex flex-col phone:w-[300px] tablet:w-[500px] gap-y-4">
+            <span className="phone:text-[30px] tablet:text-[50px] leading-tight font-inter font-bold">
               Empower Your Organization with Campus Connect
             </span>
-            <span>
+            <span className="phone:text-sm tablet:text-base">
               Streamline auditing, finance, announcements, and collaboration for
               your school organizations with our all-in-one CMS platform.
             </span>
@@ -105,18 +166,19 @@ export default function Welcome({
             </div>
           </div>
           <img
+            id="about"
             src="organization-illustration.svg"
-            className="w-[450px] h-[450px] rounded-sm"
+            className="phone:mt-5 tablet:mt-0 phone:w-[350px] phone:h-[350px] tablet:w-[450px] tablet:h-[450px] rounded-sm"
             alt=""
           />
         </div>
 
-        <div className="flex flex-row justify-evenly mt-32">
-          <span className="laptop:w-[500px] desktop:w-[600px] text-3xl font-inter font-bold text-slate-900">
+        <div className="flex phone:self-center laptop:self-auto phone:flex-col laptop:flex-row phone:justify-center laptop:justify-evenly phone:mt-20 laptop:mt-32">
+          <span className="phone:w-[300px] tablet:w-[500px] text-3xl font-inter font-bold text-slate-900">
             Streamline your organization's operations with our powerful
             collaboration tools
           </span>
-          <span className="laptop:w-[500px] desktop:w-[600px] text-lg text-justify">
+          <span className="phone:w-[300px] tablet:w-[500px] phone:mt-5 laptop:mt-0 text-lg text-justify">
             Campus Connect provides a comprehensive set of features to help
             school organizations manage their members, finances, and
             announcements. With our intuitive platform, you can easily
@@ -125,8 +187,8 @@ export default function Welcome({
           </span>
         </div>
 
-        <div className="flex flex-row justify-evenly mt-32">
-          <div className="flex flex-col w-[300px]">
+        <div className="flex phone:flex-col laptop:flex-row justify-evenly phone:mt-20 laptop:mt-32 overflow-scroll phone:self-center laptop:self-auto phone:gap-y-16 laptop:gap-y-0">
+          <div className="flex flex-col phone:w-[300px] tablet:w-[500px] phone:self-center laptop:self-auto laptop:w-[300px]">
             <img
               src="human-resources.png"
               className="w-10"
@@ -149,7 +211,7 @@ export default function Welcome({
             </Link>
           </div>
 
-          <div className="flex flex-col w-[300px]">
+          <div className="flex flex-col phone:w-[300px] tablet:w-[500px] phone:self-center laptop:self-auto laptop:w-[300px]">
             <img src="profile.png" className="w-10" alt="member management" />
             <span className="font-inter font-bold text-xl mt-5 mb-3">
               Effective Officer Management
@@ -168,7 +230,7 @@ export default function Welcome({
             </Link>
           </div>
 
-          <div className="flex flex-col w-[300px]">
+          <div className="flex flex-col phone:w-[300px] tablet:w-[500px] phone:self-center laptop:self-auto laptop:w-[300px]">
             <img src="pattern.png" className="w-10" alt="member management" />
             <span className="font-inter font-bold text-xl mt-5 mb-3">
               Seamless Collaboration
@@ -188,21 +250,24 @@ export default function Welcome({
           </div>
         </div>
 
-        <div className="flex flex-row justify-evenly mt-44">
-          <div className="flex flex-col laptop:w-[500px] desktop:w-[600px]">
+        <div
+          id="services"
+          className="flex phone:flex-col laptop:flex-row justify-evenly phone:mt-20 laptop:mt-44 phone:self-center laptop:self-auto"
+        >
+          <div className="flex flex-col phone:w-[300px] tablet:w-[500px] desktop:w-[600px] phone:self-center laptop:self-auto">
             <span>Simplify</span>
             <span className="font-bold text-[35px] font-inter">
               Efficiently Manage School Organization Auditing
             </span>
           </div>
 
-          <div className="flex flex-col laptop:w-[500px] desktop:w-[600px]">
+          <div className="flex flex-col phone:w-[300px] tablet:w-[500px] desktop:w-[600px] phone:mt-3 laptop:mt-0">
             <span>
               Campus Connect provides a comprehensive system for school
               organizations to streamline their auditing processes, ensuring
               accuracy and transparency.
             </span>
-            <div className="flex flex-row mt-10 justify-between">
+            <div className="flex phone:flex-col laptop:flex-row mt-10 justify-between phone:gap-y-5 laptop:gap-y-0">
               <div className="flex flex-col laptop:w-[220px] desktop:w-[280px]">
                 <img src="charts.png" className="w-6" alt="member management" />
                 <span className="font-inter font-bold text-lg mt-5 mb-3">
@@ -248,11 +313,11 @@ export default function Welcome({
         <img
           src="i1.png"
           alt=""
-          className="laptop:w-11/12 desktop:max-w-[1500px] rounded-2xl self-center mt-24"
+          className="phone:w-1/3 tablet:w-3/4 laptop:w-11/12 desktop:max-w-[1500px] rounded-2xl self-center mt-24"
         />
 
-        <div className="flex flex-row justify-evenly items-center mt-44">
-          <div className="flex flex-col laptop:w-[500px] desktop:w-[600px] z-10">
+        <div className="flex phone:flex-col laptop:flex-row justify-evenly items-center phone:mt-20 laptop:mt-44">
+          <div className="flex flex-col phone:w-[300px] tablet:w-[500px] desktop:w-[600px] z-10">
             <span>Simplify</span>
             <span className="font-bold text-[35px] font-inter">
               Efficiently Manage Your Organization's Finances
@@ -261,7 +326,7 @@ export default function Welcome({
               With Campus Connect, you can easily track and manage your
               organization's finances, making auditing and budgeting a breeze.
             </span>
-            <div className="flex flex-row mt-10 justify-between">
+            <div className="flex phone:flex-col laptop:flex-row mt-10 justify-between">
               <div className="flex flex-col laptop:w-[220px] desktop:w-[280px]">
                 <img
                   src="cogwheel.png"
@@ -303,17 +368,17 @@ export default function Welcome({
             </div>
           </div>
 
-          <div className="flex flex-col laptop:w-[500px] desktop:w-[600px]">
+          <div className="flex flex-col phone:w-[350px] laptop:w-[500px] desktop:w-[600px] phone:mt-20 laptop:mt-0">
             <img src="i2.png" alt="" className="scale-150" />
           </div>
         </div>
 
-        <section className="flex flex-row justify-evenly items-center mt-44">
-          <div className="flex flex-col laptop:w-[500px] desktop:w-[600px]">
+        <section className="flex phone:flex-col laptop:flex-row justify-evenly items-center phone:mt-20 laptop:mt-44">
+          <div className="phone:hidden laptop:flex flex-col laptop:w-[500px] desktop:w-[600px]">
             <img src="i4.png" alt="" className="scale-150" />
           </div>
 
-          <div className="flex flex-col laptop:w-[500px] desktop:w-[600px] z-10">
+          <div className="flex flex-col phone:w-[300px] tablet:w-[500px] desktop:w-[600px] z-10">
             <span>Simplify</span>
             <span className="font-bold text-[35px] font-inter">
               Stay Informed with the Latest Announcements from Campus Connect
@@ -322,7 +387,7 @@ export default function Welcome({
               Get updates on important events, deadlines, and news directly from
               your school organizations.
             </span>
-            <div className="flex flex-row mt-10 justify-between">
+            <div className="flex phone:flex-col laptop:flex-row mt-10 justify-between">
               <div className="flex flex-col laptop:w-[220px] desktop:w-[280px]">
                 <img
                   src="speech-bubble.png"
@@ -351,16 +416,16 @@ export default function Welcome({
           </div>
         </section>
 
-        <div className="flex flex-col justify-evenly w-full mt-36">
-          <div className="flex flex-col ml-24">
+        <div className="flex flex-col justify-evenly mt-36 phone:self-center laptop:self-auto">
+          <div className="flex flex-col phone:ml-0 laptop:ml-24 phone:self-center laptop:self-auto phone:w-[300px] tablet:w-[500px]">
             <span id="welcome-reviews-title">Satisfied Customers</span>
             <span id="welcome-reviews-subtitle">
               Hear what our users have to say about Campus Connect
             </span>
           </div>
 
-          <div className="flex flex-row justify-evenly w-full items-center mt-14">
-            <div className="flex flex-col laptop:w-[500px] desktop:w-[600px]">
+          <div className="flex phone:flex-col laptop:flex-row justify-evenly w-full items-center mt-14 phone:gap-y-10 laptop:gap-y-0">
+            <div className="flex flex-col phone:w-[300px] tablet:w-[500px] desktop:w-[600px]">
               <span>&#9733; &#9733; &#9733; &#9733; &#9733;</span>
               <span className="font-bold mt-5">
                 Campus Connect has revolutionized the way our organization
@@ -374,12 +439,16 @@ export default function Welcome({
                   <span className="font-semibold">Jann Louie Almirante</span>
                   <span>President, The Idealists' Guild</span>
                 </div>
-                <div className="border-x border-solid border-slate-400"></div>
-                <img src="webflow.png" alt="" className="scale-50 -ml-10" />
+                <div className="border-x border-solid border-slate-400 phone:hidden tablet:block"></div>
+                <img
+                  src="webflow.png"
+                  alt=""
+                  className="scale-50 -ml-10 phone:hidden tablet:block"
+                />
               </div>
             </div>
 
-            <div className="flex flex-col laptop:w-[500px] desktop:w-[600px] z-10">
+            <div className="flex flex-col phone:w-[300px] tablet:w-[500px] desktop:w-[600px] z-10">
               <span>&#9733; &#9733; &#9733; &#9733; &#9733;</span>
               <span className="font-bold mt-5">
                 Using Campus Connect has been a game-changer for our
@@ -390,24 +459,28 @@ export default function Welcome({
               <div className="flex flex-row mt-5 gap-x-3">
                 <img src="elliot.jpg" alt="" className="w-10 rounded-full" />
                 <div className="flex flex-col justify-center text-xs">
-                  <span className="font-semibold">Jann Louie Almirante</span>
+                  <span className="font-semibold">Elliot Alderson</span>
                   <span>CTO, FScociety</span>
                 </div>
-                <div className="border-x border-solid border-slate-400"></div>
-                <img src="webflow.png" alt="" className="scale-50 -ml-10" />
+                <div className="border-x border-solid border-slate-400 phone:hidden tablet:block"></div>
+                <img
+                  src="webflow.png"
+                  alt=""
+                  className="scale-50 -ml-10 phone:hidden tablet:block"
+                />
               </div>
             </div>
           </div>
         </div>
 
-        <section className="flex flex-col justify-evenly items-center w-full mt-44">
+        <section className="flex flex-col justify-evenly items-center w-full phone:mt-20 laptop:mt-44">
           <span>Connect</span>
           <span className="font-bold text-[36px] font-inter">Get in Touch</span>
           <span className="mt-333">
             Have a question? Need assistance? Contact us today.
           </span>
 
-          <div className="flex flex-row justify-evenly mt-16">
+          <div className="flex phone:flex-col laptop:flex-row justify-evenly mt-16 phone:gap-y-10 laptop:gap-y-0">
             <div className="flex flex-col w-[350px] items-center">
               <img src="email.png" alt="" className="w-10" />
               <span className="font-bold text-xl mt-5">Email</span>
@@ -444,9 +517,15 @@ export default function Welcome({
               <span className="">
                 &#169; 2024 Campus Connect. All rights reserved.
               </span>
-              <span className="underline">Privacy Policy</span>
-              <span className="underline">Terms of Service</span>
-              <span className="underline">Cookies Settings</span>
+              <span className="underline phone:hidden tablet:block">
+                Privacy Policy
+              </span>
+              <span className="underline phone:hidden tablet:block">
+                Terms of Service
+              </span>
+              <span className="underline phone:hidden tablet:block">
+                Cookies Settings
+              </span>
             </div>
 
             <div className="flex flex-row gap-x-3">
